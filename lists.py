@@ -1,12 +1,27 @@
-a=[3,2,3,4,5]
-
+count=int(input())
+a=[]
+c1=0
 
 while(1):
+    c1+=1
+    if (c1>count):
+        break
     s=input()
-    if s=="insert":
-        pos=int(input())
-        elem=int(input())
-        a[pos]=elem
+
+    if s.split(' ')[0]=="insert":
+        b=[]
+        pos=int(s.split(' ')[1])
+        elem=int(s.split(' ')[2])
+        if len(a)==0 or pos>=len(a):
+            a.append(elem)
+        else:
+            for i in range(pos):
+                b.append(a[i])
+            b.append(elem)
+            for i in range(pos,len(a)):
+                b.append(a[i])
+            a=b
+
         print(a)
         continue
 
@@ -14,10 +29,10 @@ while(1):
         print(a)
         continue
 
-    elif s=="remov":
+    elif s.split(' ')[0]=="remove":
         b=[]
         c=0
-        rem=int(input())
+        rem=int(s.split(' ')[1])
         for i in range(len(a)):
             if (a[i]!=rem):
                 b.append(a[i])
@@ -30,8 +45,8 @@ while(1):
         print(a)
         continue
 
-    elif s=="append":
-        n=int(input())
+    elif s.split(' ')[0]=="append":
+        n=int(s.split(' ')[1])
         b=[]
         for i in range(len(a)):
             b.append(a[i])
@@ -59,7 +74,7 @@ while(1):
         print(a)
         continue
 
-    elif s=="rev":
+    elif s=="reverse":
         b=[]
         i=len(a)-1
         while(i>=0):
@@ -70,5 +85,3 @@ while(1):
         continue
 
 
-    elif s=="stop":
-        break
